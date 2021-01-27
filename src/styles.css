@@ -53,7 +53,7 @@ div.home {
 }
 .ui.card > .image > img,
 .ui.cards > .card > .image > img {
-  height: 290px;
+  height: 290px !important;
 }
 
 .pys {

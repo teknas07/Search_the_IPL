@@ -48,7 +48,6 @@ export default class header extends Component {
               onClick={this.handleItemClick}
             >
               <Link to="/matchs">Matches</Link>
-              {/* <a href="/matchs">Matches</a> */}
             </Menu.Item>
           </Menu.Menu>
         </Menu>

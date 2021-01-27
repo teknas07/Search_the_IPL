@@ -185,6 +185,7 @@ export default function Match() {
                       size="tiny"
                       src={val.team1}
                       circular
+                      alt="team logo"
                     />
                     <Divider vertical>VS</Divider>
                     <Image
@@ -192,6 +193,7 @@ export default function Match() {
                       size="tiny"
                       src={val.team2}
                       circular
+                      alt="team logo"
                     />
                   </Card.Content>
                 </Card>

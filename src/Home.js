@@ -8,6 +8,7 @@ export default function Home() {
       <Image
         src="https://raw.githubusercontent.com/vijethph/ipldata/main/src/assets/logo.png"
         size="massive"
+        alt="ipl image"
       />
     </div>
   );

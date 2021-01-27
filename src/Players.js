@@ -55,75 +55,16 @@ const bowling = [
 ];
 
 export default function Players() {
-  const initialSate = {
-    filteredPoets: []
-  };
-
-  const multiselectRef = React.createRef();
+  // const multiselectRef = React.createRef();
   const [searchText, setSearchText] = useState("");
   const [datas, setDatas] = useState(data);
-  const [multiDat, setMultiData] = useState([]);
-  // var multiData = new Set();
+  // const [multiDat, setMultiData] = useState([]);
   const excludeColumns = ["DOB"];
 
   const handleChange = (value) => {
     setSearchText(value);
     filterData(value);
   };
-
-  var handlemulti = (selectedList, selectedItem) => {
-    // console.log(multiselectRef.current.selectedItem);
-    // const multiDat = [...multiData];
-    if (!multiDat.includes(selectedItem.key)) {
-      multiDat.push(selectedItem.key);
-    }
-
-    // multiData.push(selectedItem.key);
-    // console.log(selectedItem.key);
-    setMultiData(multiDat);
-    mfil(multiDat);
-    // multiDat.map(i => fil(i));
-    // setMultiData(multiDat);
-    // console.log(multiDat);
-    // let results = bowling.filter((item) => multiDat.includes(item.bowling));
-    // console.log(results);
-    const d = applyFilters(data, multiDat);
-    console.log(d);
-  };
-
-  function applyFilters(data, filters) {
-    console.log(filters);
-    return data.filter((item) =>
-      Object.keys(filters)
-        .map((keyToFilterOn) =>
-          item[keyToFilterOn].includes(filters[keyToFilterOn])
-        )
-        .reduce((x, y) => x && y, true)
-    );
-  }
-  const mfil = (multiData) => {
-    // let results = bowling.filter((item) => multiData;
-    // var res = data.filter(function (el) {
-    //   return multiData.indexOf(el.bowling) >= 0;
-    // });
-    // console.log(results);
-    //  const users= data.filter(item => {
-    //     for (let key in multiDat) {
-    //       if (item[key] === undefined || item[key] !== multiDat[key])
-    //         return false;
-    //     }
-    //     return true;
-    //   });
-    //   console.log(users);
-  };
-  //   const fil = (lowercasedValue) =>{
-  //   const mfil = data.filter((item) => {
-  //     return Object.keys(item).some((key) =>
-  //       item[key].toString().toLowerCase().includes(lowercasedValue)
-  //     );
-  //   });
-  //   setDatas(mfil);
-  // }
 
   const handle = (e) => {
     // console.log(e.value);
@@ -172,20 +113,6 @@ export default function Players() {
     setDatas(result);
   };
 
-  // const filterObjsInArr = (arr, selection) => {
-  //   const filteredArray = [];
-  //   arr.map((obj) => {
-  //     const filteredObj = {};
-  //     for (let key in obj) {
-  //       if (selection.includes(key)) {
-  //         filteredObj[key] = obj[key];
-  //       }
-  //     }
-  //     filteredArray.push(filteredObj);
-  //   });
-  //   return filteredArray;
-  // };
-
   const filterData = (value) => {
     const lowercasedValue = value.toLowerCase().trim();
     if (lowercasedValue === "") setDatas(data);
@@ -218,10 +145,6 @@ export default function Players() {
                   multiple
                   selection
                   options={country}
-                  // displayValue = "text"
-                  // onChange={(e, data) => handle(data)}
-                  // onSelect = {handlemulti}
-                  // ref = {multiselectRef}
                 />
                 <Dropdown
                   placeholder="Batting"
@@ -263,6 +186,7 @@ export default function Players() {
                     className="img"
                     floated="right"
                     size="mini"
+                    alt="players"
                     src="https://react.semantic-ui.com/images/avatar/large/steve.jpg"
                   />
                   <Card.Header style={st}>{val.Player_Name}</Card.Header>

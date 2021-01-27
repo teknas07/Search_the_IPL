@@ -1,0 +1,72 @@
+[
+  {
+    "team1": "Pune Warriors",
+    "image": "https://pbs.twimg.com/profile_images/3470272761/d4c1168a8945a56acd787c3e1c4f8484_400x400.jpeg",
+    "color": "blue"
+  },
+  {
+    "team1": "Kolkata Knight Riders",
+    "image": "https://pbs.twimg.com/profile_images/1107533910282428416/tHavJfN5_400x400.png",
+    "color": "purple"
+  },
+  {
+    "team1": "Rajasthan Royals",
+    "image": "https://pbs.twimg.com/profile_images/1271026553460121600/Y7H8XH6P_400x400.jpg",
+    "color": "pink"
+  },
+  {
+    "team1": "Kochi Tuskers Kerala",
+    "image": "https://pbs.twimg.com/profile_images/1286243698/logo_400x400.jpg",
+    "color": "teal"
+  },
+  {
+    "team1": "Gujarat Lions",
+    "image": "https://pbs.twimg.com/profile_images/694723950547333120/ma___ga1_400x400.jpg",
+    "color": "orange"
+  },
+  {
+    "team1": "Chennai Super Kings",
+    "image": "https://pbs.twimg.com/profile_images/969916077370036224/yNk5Rx66_400x400.jpg",
+    "color": "yellow"
+  },
+  {
+    "team1": "Rising Pune Supergiants",
+    "image": "https://pbs.twimg.com/profile_images/849939848215621634/ukdMa7DO.jpg",
+    "color": "violet"
+  },
+  {
+    "team1": "Delhi Daredevils",
+    "image": "https://pbs.twimg.com/profile_images/806864740484005888/GhRezlHI_400x400.jpg",
+    "color": "red"
+  },
+  {
+    "team1": "Deccan Chargers",
+    "image": "https://pbs.twimg.com/profile_images/115775247/Deccan-Chargers-Logo.png",
+    "color": "grey"
+  },
+  {
+    "team1": "Delhi Capitals",
+    "image": "https://pbs.twimg.com/profile_images/1105832358362509313/I9e57K6R_400x400.jpg",
+    "color": "blue"
+  },
+  {
+    "team1": "Mumbai Indians",
+    "image": "https://pbs.twimg.com/profile_images/1266723524938366976/ft5lwOn-_400x400.jpg",
+    "color": "blue"
+  },
+  {
+    "team1": "Sunrisers Hyderabad",
+    "image": "https://pbs.twimg.com/profile_images/1302947030927421440/dcZ3Eqmr_400x400.jpg",
+    "color": "orange"
+  },
+  {
+    "team1": "Royal Challengers Bangalore",
+    "image": "https://pbs.twimg.com/profile_images/1320414920001794049/41kRw2AM.jpg",
+    "color": "red"
+  },
+  {
+    "team1": "Kings XI Punjab",
+    "image": "https://pbs.twimg.com/profile_images/1236885457209876483/SJ1CVIh5_400x400.jpg",
+    "color": "red"
+  }
+]

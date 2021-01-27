@@ -1,0 +1,174 @@
+body {
+  background-color: #bfc0c5;
+}
+
+div.home {
+  background: #bfc0c5;
+}
+#root {
+  background-color: #bfc0c5;
+}
+.App {
+  font-family: sans-serif;
+}
+
+.ui.card.box {
+
+  background: #bfc0c5;
+  border-radius: 20px;
+  box-shadow: 12px 12px 16px 0 rgba(255, 255, 255, 0.3) inset,
+    -8px -8px 12px 0 rgba(0, 0, 0, 0.25) inset;
+}
+
+.img {
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.ui.teams {
+  border-radius: 5px;
+}
+
+.navbar {
+  margin-top: 30px;
+}
+
+.ui.segment.seg {
+  background-color: #bfc0c5;
+  border-radius: 20px;
+  box-shadow: 12px 12px 16px 0 rgba(255, 255, 255, 0.3) inset,
+    -8px -8px 12px 0 rgba(0, 0, 0, 0.25) inset;
+}
+
+.ui.menu {
+  background-color: #95dbe5ff;
+}
+
+.home {
+  margin: 50px;
+}
+
+.team {
+  padding: 15px;
+}
+.ui.card > .image > img,
+.ui.cards > .card > .image > img {
+  height: 290px;
+}
+
+.pys {
+  padding: 10px;
+}
+
+.psd {
+  padding: 15px;
+}
+
+.ui.card.titl {
+  background: transparent;
+  border-radius: 20px;
+
+  /* box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+    inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5); */
+  box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2),
+    -12px -12px 24px 0 rgba(255, 255, 255, 0.5);
+}
+
+.ui.card.des {
+  box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+    inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+  background: transparent;
+  border-radius: 20px;
+}
+
+.ui.card.venue {
+  background: transparent;
+  border-radius: 20px;
+  
+  /* box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2),
+    -12px -12px 24px 0 rgba(255, 255, 255, 0.5); */
+
+  box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+    inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+}
+
+.ui.top.right.attached.label.date1 {
+  margin-top: 10px;
+  margin-right: 2px;
+  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.22),
+    rgba(255, 255, 255, 0.25)
+  );
+
+  box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+    inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+}
+
+.ui.vertical.menu.menu {
+  margin-left: 25px;
+  border-radius: 20px;
+  border: none;
+  background: transparent;
+  box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+    inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+}
+
+.ui.centered.card.search {
+  margin-top: 20px;
+  background: transparent;
+  border-radius: 20px;
+  box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+}
+
+.ui.fluid.selection.dropdown {
+  border-radius: 20px;
+  border: none;
+  margin-top: 10px;
+  background: #e0e0e0;
+  
+}
+
+.ui.menu .item > .input input {
+  background: transparent;
+  border-radius: 10px;
+  border: none;
+}
+
+.ui.menu .item > .input input::placeholder {
+  color: black;
+}
+
+.ui.multiple.dropdown > .label {
+  border: none;
+  border-radius: 10px;
+}
+
+.ui.fluid.selection.dropdown::placeholder {
+  color: black;
+}
+
+@media only screen and (max-width: 600px) {
+  .ui.card > .content,
+  .ui.cards > .card > .content {
+    word-wrap: break-word;
+    /* font-size: 0.9em; */
+  }
+  .psd {
+    margin-left: 8px;
+  }
+  /* .pys {
+    padding-left: 25px;
+  } */
+  .ui.segment.seg {
+    /* width: 125px; */
+    height: 400px;
+  }
+}
+
+.ui.default.dropdown:not(.button) > .text,
+.ui.dropdown:not(.button) > .default.text {
+  color: black !important;
+}

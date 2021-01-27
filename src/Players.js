@@ -66,52 +66,52 @@ export default function Players() {
     filterData(value);
   };
 
-  const handle = (e) => {
-    // console.log(e.value);
-    // multiData.push(e.value);
-    // var res = multiData.flat();
-    // console.log(res);
+  // const handle = (e) => {
+  // console.log(e.value);
+  // multiData.push(e.value);
+  // var res = multiData.flat();
+  // console.log(res);
 
-    //   var result = multiData.reduce((r, e) => (r.push(...e), r), [])
-    // console.log(result);
-    //  var res= e.value;
-    //  console.log(res);
-    //  filtered();
-    //  const filtered = datas.filter(function(item) {
-    //   return e.value.indexOf(item.country);
-    // });
-    // console.log(filtered);
-    var res = e.value;
-    // res.forEach(element => {
-    //   filterData(element);
+  //   var result = multiData.reduce((r, e) => (r.push(...e), r), [])
+  // console.log(result);
+  //  var res= e.value;
+  //  console.log(res);
+  //  filtered();
+  //  const filtered = datas.filter(function(item) {
+  //   return e.value.indexOf(item.country);
+  // });
+  // console.log(filtered);
+  // var res = e.value;
+  // res.forEach(element => {
+  //   filterData(element);
 
-    // });
-    console.log(res);
-    var words = res.map((v) => v.toLowerCase().trim());
+  // });
+  // console.log(res);
+  // var words = res.map((v) => v.toLowerCase().trim());
 
-    console.log(words);
-    // var filtered = data.filter("india");
+  // console.log(words);
+  // var filtered = data.filter("india");
 
-    // console.log(filtered);
-    // filterObjsInArr(data,res);
-    filteredArray(words);
-  };
+  // console.log(filtered);
+  // filterObjsInArr(data,res);
+  // filteredArray(words);
+  // };
 
-  var filteredArray = (words) => {
-    // let filteredPoets = words;
-    // filteredPoets = filteredPoets.filter((poet) => {
-    //   // let poetName = poet.firstName.toLowerCase() + poet.lastName.toLowerCase()
-    //   return data.indexOf(
-    //     words) !== -1
-    // })
-    // setMultiData({
-    //   filteredPoets
-    // });
-    // console.log(filteredPoets);
-    const result = data.filter((word) => !word.includes(words));
-    // const result = filterData(data, words);
-    setDatas(result);
-  };
+  // var filteredArray = (words) => {
+  // let filteredPoets = words;
+  // filteredPoets = filteredPoets.filter((poet) => {
+  //   // let poetName = poet.firstName.toLowerCase() + poet.lastName.toLowerCase()
+  //   return data.indexOf(
+  //     words) !== -1
+  // })
+  // setMultiData({
+  //   filteredPoets
+  // });
+  // console.log(filteredPoets);
+  // const result = data.filter((word) => !word.includes(words));
+  // const result = filterData(data, words);
+  // setDatas(result);
+  // };
 
   const filterData = (value) => {
     const lowercasedValue = value.toLowerCase().trim();

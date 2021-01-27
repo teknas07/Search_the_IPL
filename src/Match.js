@@ -101,9 +101,9 @@ export default function Match() {
     filterData(value);
   };
 
-  const handle = (e) => {
-    console.log(e.value);
-  };
+  // const handle = (e) => {
+  //   console.log(e.value);
+  // };
 
   const filterData = (value) => {
     const lowercasedValue = value.toLowerCase().trim();

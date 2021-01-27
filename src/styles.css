@@ -13,7 +13,6 @@ div.home {
 }
 
 .ui.card.box {
-
   background: #bfc0c5;
   border-radius: 20px;
   box-shadow: 12px 12px 16px 0 rgba(255, 255, 255, 0.3) inset,
@@ -46,6 +45,7 @@ div.home {
 
 .home {
   margin: 50px;
+  margin-left: 70px;
 }
 
 .team {
@@ -84,7 +84,7 @@ div.home {
 .ui.card.venue {
   background: transparent;
   border-radius: 20px;
-  
+
   /* box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2),
     -12px -12px 24px 0 rgba(255, 255, 255, 0.5); */
 
@@ -128,7 +128,6 @@ div.home {
   border: none;
   margin-top: 10px;
   background: #e0e0e0;
-  
 }
 
 .ui.menu .item > .input input {

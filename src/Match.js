@@ -13,26 +13,26 @@ import {
   Dropdown
 } from "semantic-ui-react";
 
-import data from "./Matchs.json";
+import data from "./Matches.json";
 import "./styles.css";
 
 const season = [
-  { key: "ipl2018", text: "IPL-2018", value: "IPL-2018" },
-  { key: "ipl2019", text: "IPL-2019", value: "IPL-2019" }
+  { key: "ipl2018", text: "IPL-2018", value: "IPL-2018", disabled: false },
+  { key: "ipl2019", text: "IPL-2019", value: "IPL-2019", disabled: false }
 ];
 
 const city = [
-  { key: "mumbai", text: "Mumbai", value: "mumbai" },
-  { key: "chennai", text: "Chennai", value: "chennai" },
-  { key: "mohali", text: "Mohali", value: "mohali" },
-  { key: "kolkata", text: "Kolkata", value: "kolkata" },
-  { key: "hyderabad", text: "Hyderabad", value: "hyderabad" },
-  { key: "jaipur", text: "Jaipur", value: "jaipur" },
-  { key: "bengaluru", text: "Bengaluru", value: "bengaluru" },
-  { key: "pune", text: "Pune", value: "pune" },
-  { key: "delhi", text: "Delhi", value: "delhi" },
-  { key: "indore", text: "Indore", value: "indore" },
-  { key: "visakhapatnam", text: "Visakhapatnam", value: "visakhapatnam" }
+  { key: "mumbai", text: "Mumbai", value: "Mumbai" },
+  { key: "chennai", text: "Chennai", value: "Chennai" },
+  { key: "mohali", text: "Mohali", value: "Mohali" },
+  { key: "kolkata", text: "Kolkata", value: "Kolkata" },
+  { key: "hyderabad", text: "Hyderabad", value: "Hyderabad" },
+  { key: "jaipur", text: "Jaipur", value: "Jaipur" },
+  { key: "bengaluru", text: "Bengaluru", value: "Bengaluru" },
+  { key: "pune", text: "Pune", value: "Pune" },
+  { key: "delhi", text: "Delhi", value: "Delhi" },
+  { key: "indore", text: "Indore", value: "Indore" },
+  { key: "visakhapatnam", text: "Visakhapatnam", value: "Visakhapatnam" }
 ];
 
 const venue = [
@@ -92,8 +92,10 @@ const venue = [
 export default function Match() {
   const [searchText, setSearchText] = useState("");
   const [datas, setDatas] = useState(data);
-  // const [multiData, setMultiData] = useState("");
+  const [multisea, setMultisea] = useState([]);
   // var multiData = []
+  const [multicity, setMulticity] = useState([]);
+  const [multiven, setMultiven] = useState([]);
   const excludeColumns = ["team1", "team2", "winner"];
 
   const handleChange = (value) => {
@@ -101,9 +103,176 @@ export default function Match() {
     filterData(value);
   };
 
-  // const handle = (e) => {
-  //   console.log(e.value);
-  // };
+  const handlevenue = (e) => {
+    console.log(e.value);
+    const venue = e.value;
+    setMultiven(e.value);
+    // blockcity();
+    // city.pop();
+    console.log(multisea);
+    if (multisea.length > 0 && multicity.length > 0 && venue.length <= 0) {
+      console.log("both");
+      filtboth(multicity, multisea);
+      // console.log("empty");
+    } else if (
+      venue.length > 0 &&
+      multisea.length <= 0 &&
+      multicity.length <= 0
+    ) {
+      filt(venue);
+    } else if (
+      multisea.length > 0 &&
+      multicity.length <= 0 &&
+      venue.length <= 0
+    ) {
+      // console.log("seas");
+      filt(multisea);
+    } else if (
+      multisea.length > 0 &&
+      multicity.length <= 0 &&
+      venue.length > 0
+    ) {
+      // console.log("seas");
+      filtv(venue, multisea);
+    } else if (
+      multisea.length > 0 &&
+      multicity.length > 0 &&
+      venue.length > 0
+    ) {
+      console.log("seas");
+      // filtv(venue,multisea);
+      alert("Either select city or venue but not both together");
+    } else {
+      setDatas(data);
+    }
+  };
+
+  const blockcity = () => {
+    while (multicity.length > 0) {
+      multicity.pop();
+    }
+
+    venue.forEach((ele) => {
+      ele.disabled = false;
+    });
+
+    city.forEach((el) => {
+      el.disabled = true;
+    });
+  };
+
+  const handlecity = (e) => {
+    console.log(e.value);
+    const city = e.value;
+    setMulticity(e.value);
+    // blockvenue();
+
+    // city.pop();
+    // console.log(bat);
+    if (multisea.length > 0 && city.length > 0) {
+      console.log("both");
+      filtboth(city, multisea);
+      // console.log("empty");
+    } else if (city.length > 0) {
+      filt(city);
+    } else if (
+      multisea.length > 0 &&
+      city.length <= 0 &&
+      multiven.length <= 0
+    ) {
+      console.log("seas");
+      filt(multisea);
+    } else if (multisea.length > 0 && city.length <= 0 && multiven.length > 0) {
+      console.log("seas");
+      // blockcity();
+      filtv(multiven, multisea);
+    } else {
+      setDatas(data);
+    }
+  };
+
+  const blockvenue = () => {
+    while (multiven.length > 0) {
+      multiven.pop();
+    }
+    city.forEach((el) => {
+      el.disabled = false;
+    });
+    venue.forEach((ele) => {
+      ele.disabled = true;
+    });
+  };
+
+  const handle = (e) => {
+    // console.log(e);
+    const cot = e.value;
+    setMultisea(e.value);
+    // console.log(bat);
+    // if (cot.length > 0 && bat.length > 0) {
+    //   console.log(bat);
+    //   filtbat(cot);
+    //   console.log("empty");
+    // } else
+
+    if (cot.length > 0 && multicity.length <= 0 && multiven.length <= 0) {
+      filt(cot);
+    } else if (cot.length > 0 && multicity.length <= 0 && multiven.length > 0) {
+      console.log("seas");
+      filtv(multiven, cot);
+    } else if (
+      cot.length <= 0 &&
+      multicity.length <= 0 &&
+      multiven.length > 0
+    ) {
+      // console.log("seas");
+      filt(multiven);
+    } else {
+      setDatas(data);
+    }
+  };
+
+  const filt = (a1) => {
+    const dt = [];
+    a1.forEach((ele) => {
+      // console.log(ele);
+      const words = data.filter((word) => {
+        return Object.keys(word).some((key) =>
+          word[key].toString().includes(ele)
+        );
+      });
+      // word.Country===(ele));
+      dt.push(words);
+    });
+
+    console.log(dt.flat());
+    setDatas(dt.flat());
+  };
+
+  const filtboth = (a1, a3) => {
+    const dt2 = [];
+    for (let i = 0; i < a3.length; i++) {
+      for (let j = 0; j < a1.length; j++) {
+        const words = data.filter(
+          (word) => word.Season === a3[i] && word.city === a1[j]
+        );
+        dt2.push(words);
+      }
+    }
+    setDatas(dt2.flat());
+  };
+
+  const filtv = (a1, a3) => {
+    const dt2 = [];
+    for (let i = 0; i < a3.length; i++) {
+      for (let j = 0; j < a1.length; j++) {
+        const words = data.filter(
+          (word) => word.Season === a3[i] && word.venue === a1[j]
+        );
+        dt2.push(words);
+      }
+    }
+    setDatas(dt2.flat());
+  };
 
   const filterData = (value) => {
     const lowercasedValue = value.toLowerCase().trim();
@@ -136,7 +305,7 @@ export default function Match() {
                 multiple
                 selection
                 options={season}
-                // onChange={(e, data) => handle(data)}
+                onChange={(e, data) => handle(data)}
               />
               <Dropdown
                 placeholder="City"
@@ -144,6 +313,8 @@ export default function Match() {
                 multiple
                 selection
                 options={city}
+                onChange={(e, data) => handlecity(data)}
+                onClick={blockvenue}
               />
               <Dropdown
                 placeholder="Venue"
@@ -151,6 +322,8 @@ export default function Match() {
                 multiple
                 selection
                 options={venue}
+                onChange={(e, data) => handlevenue(data)}
+                onClick={blockcity}
               />
             </Menu.Item>
             <Menu.Item position="right">

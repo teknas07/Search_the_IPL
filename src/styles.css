@@ -44,8 +44,9 @@ div.home {
 }
 
 .home {
-  margin: 50px;
-  margin-left: 70px;
+  margin-top: 10vh;
+  margin-left: 15vw;
+  margin-right: 10px;
 }
 
 .team {
@@ -157,6 +158,11 @@ div.home {
   .ui.segment.seg {
     /* width: 125px; */
     height: 400px;
+  }
+
+  .home {
+    margin-top: 25vh;
+    margin-left: 12px;
   }
 }
 

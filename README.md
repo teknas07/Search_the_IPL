@@ -4,8 +4,4 @@
 
 ## Lighthouse Report
 
-<img src="lighthouse_report-1.png" alt="lighthouse report">
-<img src="lighthouse_report-2.png" alt="lighthouse report">
-<img src="lighthouse_report-3.png" alt="lighthouse report">
-<img src="lighthouse_report-4.png" alt="lighthouse report">
-
+<img src="lighthouse-1.jpg" alt="lighthouse report">

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Grid, Card, Menu, Input, Message } from "semantic-ui-react";
 
-import data from "../data/teams.json";
+import data from "./data/teams.json";
 import "./styles.css";
 
 export default function Team() {

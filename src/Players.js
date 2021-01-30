@@ -10,7 +10,7 @@ import {
   Message
 } from "semantic-ui-react";
 
-import data1 from "../data/players.json";
+import data1 from "./data/players.json";
 import "./styles.css";
 
 //country dropdown options

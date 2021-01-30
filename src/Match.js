@@ -14,7 +14,7 @@ import {
   Message
 } from "semantic-ui-react";
 
-import data from "../data/Matches.json";
+import data from "./data/Matches.json";
 import "./styles.css";
 
 //Season dropdown options

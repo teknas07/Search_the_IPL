@@ -9,8 +9,8 @@
 ## Steps to optimize the page load time
 
 ```
-Optimize Images
+Optimized Images
 ```
 ```
-Minify CSS and JavaScript
+Minimised CSS and JavaScript
 ```

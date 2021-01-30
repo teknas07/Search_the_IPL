@@ -36,7 +36,7 @@ export default class header extends Component {
                 Teams
               </Link>
             </Menu.Item>
-            players
+            {/* players */}
             <Menu.Item
               name="player"
               active={activeItem === "player"}

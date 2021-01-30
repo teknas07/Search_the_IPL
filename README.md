@@ -2,10 +2,10 @@
 
 > Create a discovery page for IPL where users can search & use facet filters to find different entities – players, teams, owners & venus. Users should be able to filter based on  any attributes related to the entity. Make it as easy, intuitive and as less steps as possible for the user to reach a particular entity.
 
-## Page load time
-```
-1.10s
-```
 ## Lighthouse Report
 
-<embed src="/lighthouse_report.pdf" type="application/pdf">
+<img src="lighthouse_report-1.png" alt="lighthouse report">
+<img src="lighthouse_report-2.png" alt="lighthouse report">
+<img src="lighthouse_report-3.png" alt="lighthouse report">
+<img src="lighthouse_report-4.png" alt="lighthouse report">
+

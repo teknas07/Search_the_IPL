@@ -1,20 +1,25 @@
 import React, { useState } from "react";
-import { Grid, Card, Menu, Input } from "semantic-ui-react";
+import { Grid, Card, Menu, Input, Message } from "semantic-ui-react";
 
-import data from "./teams.json";
+import data from "../data/teams.json";
 import "./styles.css";
 
 export default function Team() {
+  // State variable for Single Search
   const [searchText, setSearchText] = useState("");
+  // State variable for data
   const [datas, setDatas] = useState(data);
 
+  //attributes for exclude from search result
   const excludeColumns = [""];
 
+  //Handle single search
   const handleChange = (value) => {
     setSearchText(value);
     filterData(value);
   };
 
+  // filter single search value
   const filterData = (value) => {
     const lowercasedValue = value.toLowerCase().trim();
     if (lowercasedValue === "") setDatas(data);
@@ -34,6 +39,7 @@ export default function Team() {
     <div className="team">
       <Card centered className="search">
         <Card.Content>
+          {/* multi-search dropdown */}
           <Menu vertical className="menu">
             <Menu.Item position="right">
               <Input
@@ -47,6 +53,7 @@ export default function Team() {
           </Menu>
         </Card.Content>
       </Card>
+      {/* displays filter or non-filter data  */}
       <Grid doubling stackable columns={4}>
         {datas.map((val, key) => (
           <Grid.Column>
@@ -63,6 +70,19 @@ export default function Team() {
         ))}
         ;
       </Grid>
+      {/* display data not found message */}
+      <div className="notf">
+        {datas.length === 0 && (
+          <Card centered className="notfound">
+            <Card.Content>
+              <Message warning compact centered>
+                <Message.Header>Sorry,entered data not found :)</Message.Header>
+                <p>Try again</p>
+              </Message>
+            </Card.Content>
+          </Card>
+        )}
+      </div>
     </div>
   );
 }

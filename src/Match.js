@@ -10,17 +10,20 @@ import {
   GridColumn,
   Menu,
   Input,
-  Dropdown
+  Dropdown,
+  Message
 } from "semantic-ui-react";
 
-import data from "./Matches.json";
+import data from "../data/Matches.json";
 import "./styles.css";
 
+//Season dropdown options
 const season = [
   { key: "ipl2018", text: "IPL-2018", value: "IPL-2018", disabled: false },
   { key: "ipl2019", text: "IPL-2019", value: "IPL-2019", disabled: false }
 ];
 
+// City dropdown options
 const city = [
   { key: "mumbai", text: "Mumbai", value: "Mumbai" },
   { key: "chennai", text: "Chennai", value: "Chennai" },
@@ -35,6 +38,7 @@ const city = [
   { key: "visakhapatnam", text: "Visakhapatnam", value: "Visakhapatnam" }
 ];
 
+// Venue dropdown options
 const venue = [
   {
     key: "wankhede stadium",
@@ -86,67 +90,73 @@ const venue = [
     key: "aca-vdca stadium",
     text: "ACA-VDCA Stadium",
     value: "ACA-VDCA Stadium"
+  },
+  {
+    key: "IS bindra stadium",
+    text: "IS Bindra Stadium",
+    value: "IS Bindra Stadium"
   }
 ];
 
 export default function Match() {
+  // State variable for Single Search
   const [searchText, setSearchText] = useState("");
+  // State  variable for data
   const [datas, setDatas] = useState(data);
+  // State  variable  for season multi-search
   const [multisea, setMultisea] = useState([]);
-  // var multiData = []
+  // State  variable  for city multi-search
   const [multicity, setMulticity] = useState([]);
+  // State  variable  for venue multi-search
   const [multiven, setMultiven] = useState([]);
-  const excludeColumns = ["team1", "team2", "winner"];
 
+  //attributes that are  exclude from search result
+  const excludeColumns = ["team1", "team2", "winner"];
+  //Handle single search
   const handleChange = (value) => {
     setSearchText(value);
     filterData(value);
   };
 
+  // handle venue search
   const handlevenue = (e) => {
-    console.log(e.value);
     const venue = e.value;
+    //Set state
     setMultiven(e.value);
-    // blockcity();
-    // city.pop();
-    console.log(multisea);
+    //filter data based on both season and city
     if (multisea.length > 0 && multicity.length > 0 && venue.length <= 0) {
-      console.log("both");
       filtboth(multicity, multisea);
-      // console.log("empty");
-    } else if (
+    }
+    //filter data based on venue only
+    else if (
       venue.length > 0 &&
       multisea.length <= 0 &&
       multicity.length <= 0
     ) {
       filt(venue);
-    } else if (
+    }
+    //filter data based on season only
+    else if (
       multisea.length > 0 &&
       multicity.length <= 0 &&
       venue.length <= 0
     ) {
-      // console.log("seas");
       filt(multisea);
-    } else if (
-      multisea.length > 0 &&
-      multicity.length <= 0 &&
-      venue.length > 0
-    ) {
-      // console.log("seas");
+    }
+    //filter data based on both season and venue
+    else if (multisea.length > 0 && multicity.length <= 0 && venue.length > 0) {
       filtv(venue, multisea);
-    } else if (
-      multisea.length > 0 &&
-      multicity.length > 0 &&
-      venue.length > 0
-    ) {
-      console.log("seas");
-      // filtv(venue,multisea);
+    }
+    //filter data based on all the attributes
+    else if (multisea.length > 0 && multicity.length > 0 && venue.length > 0) {
       alert("Either select city or venue but not both together");
-    } else {
+    }
+    // displays non-filter data
+    else {
       setDatas(data);
     }
   };
-
+  // remove the parameters from city search filter when venue is selected
   const blockcity = () => {
     while (multicity.length > 0) {
       multicity.pop();
@@ -161,36 +171,34 @@ export default function Match() {
     });
   };
 
+  // handle city search
   const handlecity = (e) => {
-    console.log(e.value);
     const city = e.value;
+    //set state
     setMulticity(e.value);
-    // blockvenue();
-
-    // city.pop();
-    // console.log(bat);
+    //filter data based on saeson and city
     if (multisea.length > 0 && city.length > 0) {
-      console.log("both");
       filtboth(city, multisea);
-      // console.log("empty");
-    } else if (city.length > 0) {
+    }
+    //filter data based on city only
+    else if (city.length > 0) {
       filt(city);
-    } else if (
-      multisea.length > 0 &&
-      city.length <= 0 &&
-      multiven.length <= 0
-    ) {
-      console.log("seas");
+    }
+    // filter data based on season only
+    else if (multisea.length > 0 && city.length <= 0 && multiven.length <= 0) {
       filt(multisea);
-    } else if (multisea.length > 0 && city.length <= 0 && multiven.length > 0) {
-      console.log("seas");
-      // blockcity();
+    }
+    // filter data based on season and venue
+    else if (multisea.length > 0 && city.length <= 0 && multiven.length > 0) {
       filtv(multiven, multisea);
-    } else {
+    }
+    // display non-filter data
+    else {
       setDatas(data);
     }
   };
 
+  // remove the parameters from venue search filter when city is selected
   const blockvenue = () => {
     while (multiven.length > 0) {
       multiven.pop();
@@ -203,51 +211,52 @@ export default function Match() {
     });
   };
 
+  // handle season search
   const handle = (e) => {
-    // console.log(e);
     const cot = e.value;
+    //set state
     setMultisea(e.value);
-    // console.log(bat);
-    // if (cot.length > 0 && bat.length > 0) {
-    //   console.log(bat);
-    //   filtbat(cot);
-    //   console.log("empty");
-    // } else
-
+    //filter data based on season only
     if (cot.length > 0 && multicity.length <= 0 && multiven.length <= 0) {
       filt(cot);
-    } else if (cot.length > 0 && multicity.length <= 0 && multiven.length > 0) {
-      console.log("seas");
+    }
+    // filter data based on both season and venue
+    else if (cot.length > 0 && multicity.length <= 0 && multiven.length > 0) {
       filtv(multiven, cot);
-    } else if (
-      cot.length <= 0 &&
-      multicity.length <= 0 &&
-      multiven.length > 0
-    ) {
-      // console.log("seas");
+    }
+    // filter data based on venue only
+    else if (cot.length <= 0 && multicity.length <= 0 && multiven.length > 0) {
       filt(multiven);
-    } else {
+    }
+    //filter data based on season and city
+    else if (cot.length > 0 && multicity.length > 0) {
+      filtboth(multicity, cot);
+    }
+    //filter data based on city only
+    else if (multicity.length > 0) {
+      filt(multicity);
+    }
+    //display non-filter data
+    else {
       setDatas(data);
     }
   };
 
+  //filter single attribute
   const filt = (a1) => {
     const dt = [];
     a1.forEach((ele) => {
-      // console.log(ele);
       const words = data.filter((word) => {
         return Object.keys(word).some((key) =>
           word[key].toString().includes(ele)
         );
       });
-      // word.Country===(ele));
       dt.push(words);
     });
-
-    console.log(dt.flat());
     setDatas(dt.flat());
   };
 
+  //filter season and city
   const filtboth = (a1, a3) => {
     const dt2 = [];
     for (let i = 0; i < a3.length; i++) {
@@ -261,6 +270,7 @@ export default function Match() {
     setDatas(dt2.flat());
   };
 
+  // filter season and venue
   const filtv = (a1, a3) => {
     const dt2 = [];
     for (let i = 0; i < a3.length; i++) {
@@ -271,9 +281,11 @@ export default function Match() {
         dt2.push(words);
       }
     }
+
     setDatas(dt2.flat());
   };
 
+  // filter single search value
   const filterData = (value) => {
     const lowercasedValue = value.toLowerCase().trim();
     if (lowercasedValue === "") setDatas(data);
@@ -289,6 +301,7 @@ export default function Match() {
     }
   };
 
+  // text color for venue
   const venue1 = {
     color: "red"
   };
@@ -297,6 +310,7 @@ export default function Match() {
     <div>
       <Card centered className="search">
         <Card.Content>
+          {/* multi-search dropdown */}
           <Menu vertical className="menu">
             <Menu.Item>
               <Dropdown
@@ -338,6 +352,7 @@ export default function Match() {
           </Menu>
         </Card.Content>
       </Card>
+      {/* displays filter or non-filter data  */}
       <Grid doubling stackable columns={3}>
         {datas.map((val, key) => (
           <GridColumn key={key}>
@@ -394,6 +409,21 @@ export default function Match() {
         ))}
         ;
       </Grid>
+      {/* display data not found message */}
+      <div className="notf">
+        {datas.length === 0 && (
+          <Card centered className="notfound">
+            <Card.Content>
+              <Message warning compact centered>
+                <Message.Header>
+                  Sorry,data matching filter parameters not found :)
+                </Message.Header>
+                <p>Try again</p>
+              </Message>
+            </Card.Content>
+          </Card>
+        )}
+      </div>
     </div>
   );
 }

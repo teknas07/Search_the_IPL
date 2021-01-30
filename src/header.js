@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./styles.css";
 
 export default class header extends Component {
+  // state variable
   state = { activeItem: "home" };
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
@@ -15,6 +16,7 @@ export default class header extends Component {
       <div className="header">
         <Menu inverted>
           <Menu.Menu position="right">
+            {/* home */}
             <Menu.Item
               name="home"
               active={activeItem === "home"}
@@ -24,27 +26,28 @@ export default class header extends Component {
                 Home
               </Link>
             </Menu.Item>
-
+            {/* teams */}
             <Menu.Item
-              name="inbox"
-              active={activeItem === "inbox"}
+              name="team"
+              active={activeItem === "team"}
               onClick={this.handleItemClick}
             >
               <Link to="/teams" style={{ textDecoration: "none" }}>
                 Teams
               </Link>
             </Menu.Item>
-
+            players
             <Menu.Item
-              name="spam"
-              active={activeItem === "spam"}
+              name="player"
+              active={activeItem === "player"}
               onClick={this.handleItemClick}
             >
               <Link to="/players">Players</Link>
             </Menu.Item>
+            {/* Matches */}
             <Menu.Item
-              name="updates"
-              active={activeItem === "updates"}
+              name="match"
+              active={activeItem === "match"}
               onClick={this.handleItemClick}
             >
               <Link to="/matchs">Matches</Link>

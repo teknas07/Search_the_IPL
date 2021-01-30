@@ -143,20 +143,34 @@ div.home {
   color: black;
 }
 
+.ui.attached.warning.message,
+.ui.warning.message {
+  border-radius: 20px;
+}
+
+.ui.warning.message {
+  background: transparent !important;
+}
+.notf {
+  margin-top: 25px;
+}
+.ui.card.notfound {
+  background: transparent;
+  border: none;
+  border-radius: 20px;
+  box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+    inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+}
+
 @media only screen and (max-width: 600px) {
   .ui.card > .content,
   .ui.cards > .card > .content {
     word-wrap: break-word;
-    /* font-size: 0.9em; */
   }
   .psd {
     margin-left: 8px;
   }
-  /* .pys {
-    padding-left: 25px;
-  } */
   .ui.segment.seg {
-    /* width: 125px; */
     height: 400px;
   }
 

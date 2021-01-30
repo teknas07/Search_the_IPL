@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-// import { filterData, SearchType } from "filter-data";
-// import { Multiselect } from "multiselect-react-dropdown";
 import {
   Grid,
   Card,
@@ -8,12 +6,14 @@ import {
   Menu,
   Dropdown,
   Input,
-  Flag
+  Flag,
+  Message
 } from "semantic-ui-react";
 
-import data1 from "./players.json";
+import data1 from "../data/players.json";
 import "./styles.css";
 
+//country dropdown options
 const country = [
   { key: "india", text: "India", value: "India" },
   { key: "england", text: "England", value: "England" },
@@ -26,11 +26,13 @@ const country = [
   { key: "pakistan", text: "Pakistan", value: "Pakistan" }
 ];
 
+//batting dropdown options
 const batting = [
   { key: "right-hand", text: "Right-hand", value: "Right-hand" },
   { key: "left-hand", text: "Left-hand", value: "Left-hand" }
 ];
 
+//bowling dropdown options
 const bowling = [
   {
     key: "right-arm medium",
@@ -54,270 +56,158 @@ const bowling = [
 ];
 
 export default function Players() {
-  // const multiselectRef = React.createRef();
+  // State variable for Single Search
   const [searchText, setSearchText] = useState("");
+  // State  variable for data
   const [datas, setDatas] = useState(data1);
+  // State  variable  for country multi-search
   const [multiDat, setMultiData] = useState([]);
+  // State  variable  for bat multi-search
   const [multibat, setMultibat] = useState([]);
+  // State  variable  for bowl multi-search
   const [multibowl, setMultibowl] = useState([]);
 
+  //attributes for exclude from search result
   const excludeColumns = ["DOB"];
-  // var bat = [];
 
+  //Handle single search
   const handleChange = (value) => {
     setSearchText(value);
     filterData(value);
   };
 
-  // const check = (multiDat, multibat, multibowl) => {
-  //   console.log(multiDat, multibat, multibowl);
-  //   if (
-  //     multiDat.length === 0 &&
-  //     typeof multibat === "undefined" &&
-  //     multibowl.length !== 0
-  //   ) {
-  //     filt(multibowl);
-  //   } else if (
-  //     multiDat.length === 0 &&
-  //     multibat === "undefined" &&
-  //     multibowl.length === 0
-  //   ) {
-  //     setDatas(data1);
-  //   } else if (
-  //     multiDat.length !== 0 &&
-  //     typeof multibat === "undefined" &&
-  //     multibowl.length !== 0
-  //   ) {
-  //     console.log("done");
-  //     filtbowl(multiDat, multibowl);
-  //   } else if (
-  //     multiDat.length === 0 &&
-  //     typeof multibat !== "undefined" &&
-  //     multibowl.length !== 0
-  //   ) {
-  //     filtbowlb(multibat, multibowl);
-  //   } else if (
-  //     multiDat.length !== 0 &&
-  //     typeof multibat === "undefined" &&
-  //     multibowl.length === 0
-  //   ) {
-  //     filt(multiDat);
-  //   } else if (
-  //     multiDat.length === 0 &&
-  //     typeof multibat !== "undefined" &&
-  //     multibowl.length === 0
-  //   ) {
-  //     filt(multibat);
-  //   } else if (
-  //     multiDat.length !== 0 &&
-  //     multibat.length !== 0 &&
-  //     multibowl.length === 0
-  //   ) {
-  //     console.log("cbat");
-  //     filtbat(multiDat);
-  //   } else if (
-  //     multiDat.length !== 0 &&
-  //     multibat.length !== null &&
-  //     multibowl.length !== 0
-  //   ) {
-  //     filtbowlc(multiDat, multibowl);
-  //   }
-  // };
-
+  // handle bowl search
   const handlebowl = (data) => {
     const bowl = data.value;
-    // console.log(bowl, bowl.length);
-    // console.log(multibat, multibat.length);
-    // console.log(multiDat, multiDat.length);
-
+    //set state
     setMultibowl(data.value);
-    // if (
-    //   multiDat.length === 0 &&
-    //   typeof multibat === "undefined" &&
-    //   data.value.length !== 0
-    // ) {
-    //   filt(bowl);
-    // } else if (
-    //   multiDat.length === 0 &&
-    //   typeof multibat === "undefined" &&
-    //   data.value.length === 0
-    // ) {
-    //   setDatas(data1);
-    // } else if (
-    //   multiDat.length !== 0 &&
-    //   typeof multibat === "undefined" &&
-    //   data.value.length !== 0
-    // ) {
-    //   console.log("done");
-    //   filtbowl(multiDat, data.value);
-    // } else if (
-    //   multiDat.length === 0 &&
-    //   typeof multibat !== "undefined" &&
-    //   data.value.length !== 0
-    // ) {
-    //   filtbowlb(multibat, data.value);
-    // } else if (
-    //   multiDat.length !== 0 &&
-    //   typeof multibat === "undefined" &&
-    //   data.value.length === 0
-    // ) {
-    //   filt(multiDat);
-    // } else if (
-    //   multiDat.length === 0 &&
-    //   typeof multibat !== "undefined" &&
-    //   data.value.length === 0
-    // ) {
-    //   filt(multibat);
-    // } else if (
-    //   multiDat.length !== 0 &&
-    //   multibat.length !== 0 &&
-    //   data.value.length === 0
-    // ) {
-    //   console.log("cbat");
-    //   filtbat(multiDat);
-    // } else if (
-    //   multiDat.length !== 0 &&
-    //   multibat.length !== null &&
-    //   data.value.length !== 0
-    // ) {
-    //   filtbowlc(multiDat, data.value);
-    // }
+    //filter data based on bat only
     if (multiDat.length === 0 && multibat.length !== 0 && bowl.length === 0) {
-      // console.log("bat");
       filt(multibat);
-    } else if (
-      multiDat.length <= 0 &&
-      multibat.length <= 0 &&
-      bowl.length <= 0
-    ) {
+    }
+    //display non-filter data
+    else if (multiDat.length <= 0 && multibat.length <= 0 && bowl.length <= 0) {
       setDatas(data1);
-    } else if (multiDat.length > 0 && multibat.length <= 0 && bowl.length > 0) {
+    }
+    //filter data based on both country and bowl
+    else if (multiDat.length > 0 && multibat.length <= 0 && bowl.length > 0) {
       filtbowl(multiDat, bowl);
-    } else if (multiDat.length > 0 && multibat.length > 0 && bowl.length <= 0) {
-      // console.log("cb");
+    }
+    //filter data based on both country and bat
+    else if (multiDat.length > 0 && multibat.length > 0 && bowl.length <= 0) {
       filtbat(multiDat, multibat);
-    } else if (multiDat.length <= 0 && multibat.length > 0 && bowl.length > 0) {
+    }
+    //filter data based on both bat and bowl
+    else if (multiDat.length <= 0 && multibat.length > 0 && bowl.length > 0) {
       filtbowlb(multibat, bowl);
-    } else if (
-      multiDat.length > 0 &&
-      multibat.length <= 0 &&
-      bowl.length <= 0
-    ) {
+    }
+    //filter data based on country only
+    else if (multiDat.length > 0 && multibat.length <= 0 && bowl.length <= 0) {
       filt(multiDat);
-    } else if (multiDat.length > 0 && multibat.length > 0 && bowl.length > 0) {
+    }
+    //filter data based on all the attributes
+    else if (multiDat.length > 0 && multibat.length > 0 && bowl.length > 0) {
       filtbowlc(multiDat, multibat, bowl);
-    } else if (
-      multiDat.length <= 0 &&
-      multibat.length <= 0 &&
-      bowl.length > 0
-    ) {
+    }
+    //filter data based on bowl only
+    else if (multiDat.length <= 0 && multibat.length <= 0 && bowl.length > 0) {
       filt(bowl);
     }
-    // check(multiDat, multibat, data.value);
   };
 
+  // handle bat search
   const handlebat = (data) => {
     const bat = data.value;
+    //set state
     setMultibat(data.value);
-    console.log(bat);
+    //filter data based on bat only
     if (multiDat.length === 0 && bat.length !== 0 && multibowl.length === 0) {
-      // console.log("bat");
       filt(bat);
-    } else if (
-      multiDat.length <= 0 &&
-      bat.length <= 0 &&
-      multibowl.length <= 0
-    ) {
+    }
+    //display non-filter data
+    else if (multiDat.length <= 0 && bat.length <= 0 && multibowl.length <= 0) {
       setDatas(data1);
-    } else if (multiDat.length > 0 && bat.length <= 0 && multibowl.length > 0) {
+    }
+    //filter data based on both country and bowl
+    else if (multiDat.length > 0 && bat.length <= 0 && multibowl.length > 0) {
       filtbowl(multiDat, multibowl);
-    } else if (multiDat.length > 0 && bat.length > 0 && multibowl.length <= 0) {
-      // console.log("cb");
+    }
+    //filter data based on both country and bat
+    else if (multiDat.length > 0 && bat.length > 0 && multibowl.length <= 0) {
       filtbat(multiDat, bat);
-    } else if (multiDat.length <= 0 && bat.length > 0 && multibowl.length > 0) {
+    }
+    //filter data based on both bat and bowl
+    else if (multiDat.length <= 0 && bat.length > 0 && multibowl.length > 0) {
       filtbowlb(bat, multibowl);
-    } else if (
-      multiDat.length > 0 &&
-      bat.length <= 0 &&
-      multibowl.length <= 0
-    ) {
+    }
+    //filter data based on country only
+    else if (multiDat.length > 0 && bat.length <= 0 && multibowl.length <= 0) {
       filt(multiDat);
-    } else if (multiDat.length > 0 && bat.length > 0 && multibowl.length > 0) {
+    }
+    //filter data based on all the attributes
+    else if (multiDat.length > 0 && bat.length > 0 && multibowl.length > 0) {
       filtbowlc(multiDat, bat, multibowl);
-    } else if (
-      multiDat.length <= 0 &&
-      bat.length <= 0 &&
-      multibowl.length > 0
-    ) {
+    }
+    //filter data based on bowl only
+    else if (multiDat.length <= 0 && bat.length <= 0 && multibowl.length > 0) {
       filt(multibowl);
     }
   };
 
+  // handle country search
   const handle = (data) => {
-    // console.log(data.value);
     const cot = data.value;
+    //set state
     setMultiData(data.value);
-    // console.log(bat);
-    // if (cot.length > 0 && multibat.length > 0) {
-    //   // console.log(bat);
-    //   filtbat(cot);
-    //   console.log("empty");
-    // } else if (cot.length > 0) {
-    //   filt(cot);
-    // } else {
-    //   setDatas(data1);
-    // }
+    //filter data based on bat only
     if (cot.length === 0 && multibat.length !== 0 && multibowl.length === 0) {
-      // console.log("bat");
       filt(multibat);
-    } else if (
-      cot.length <= 0 &&
-      multibat.length <= 0 &&
-      multibowl.length <= 0
-    ) {
+    }
+    //display non-filter data
+    else if (cot.length <= 0 && multibat.length <= 0 && multibowl.length <= 0) {
       setDatas(data1);
-    } else if (cot.length > 0 && multibat.length <= 0 && multibowl.length > 0) {
+    }
+    //filter data based on both country and bowl
+    else if (cot.length > 0 && multibat.length <= 0 && multibowl.length > 0) {
       filtbowl(cot, multibowl);
-    } else if (cot.length > 0 && multibat.length > 0 && multibowl.length <= 0) {
-      // console.log("cb");
+    }
+    //filter data based on both country and bat
+    else if (cot.length > 0 && multibat.length > 0 && multibowl.length <= 0) {
       filtbat(cot, multibat);
-    } else if (cot.length <= 0 && multibat.length > 0 && multibowl.length > 0) {
+    }
+    //filter data based on both bat and bowl
+    else if (cot.length <= 0 && multibat.length > 0 && multibowl.length > 0) {
       filtbowlb(multibat, multibowl);
-    } else if (
-      cot.length > 0 &&
-      multibat.length <= 0 &&
-      multibowl.length <= 0
-    ) {
+    }
+    //filter data based on country only
+    else if (cot.length > 0 && multibat.length <= 0 && multibowl.length <= 0) {
       filt(cot);
-    } else if (cot.length > 0 && multibat.length > 0 && multibowl.length > 0) {
+    }
+    //filter data based on all the attributes
+    else if (cot.length > 0 && multibat.length > 0 && multibowl.length > 0) {
       filtbowlc(cot, multibat, multibowl);
-    } else if (
-      cot.length <= 0 &&
-      multibat.length <= 0 &&
-      multibowl.length > 0
-    ) {
+    }
+    //filter data based on bowl only
+    else if (cot.length <= 0 && multibat.length <= 0 && multibowl.length > 0) {
       filt(multibowl);
     }
-    // check(data.value,multibat,multibowl);
   };
 
+  //filter single attribute
   const filt = (a1) => {
     const dt = [];
     a1.forEach((ele) => {
-      // console.log(ele);
       const words = data1.filter((word) => {
         return Object.keys(word).some((key) =>
           word[key].toString().includes(ele)
         );
       });
-      // word.Country===(ele));
       dt.push(words);
     });
-
-    console.log(dt.flat());
     setDatas(dt.flat());
   };
 
+  //filter country and bat
   const filtbat = (a1, a2) => {
     const dt2 = [];
     for (let i = 0; i < a2.length; i++) {
@@ -331,6 +221,7 @@ export default function Players() {
     setDatas(dt2.flat());
   };
 
+  //filter bowl and country
   const filtbowl = (a1, a3) => {
     const dt2 = [];
     for (let i = 0; i < a3.length; i++) {
@@ -344,6 +235,7 @@ export default function Players() {
     setDatas(dt2.flat());
   };
 
+  //filter bat and bowl
   const filtbowlb = (a2, a1) => {
     const dt2 = [];
     for (let i = 0; i < a2.length; i++) {
@@ -355,18 +247,9 @@ export default function Players() {
       }
     }
     setDatas(dt2.flat());
-    // const dt1 = [];
-    // a2.forEach((ele) => {
-    //   console.log(bat);
-    //   const words = data1.filter(
-    //     (word) => word.Bowling_Skill === ele && word.Batting_Hand === bat
-    //   );
-    //   dt1.push(words);
-    // });
-    // console.log(dt1.flat());
-    // setDatas(dt1.flat());
   };
 
+  //filter all the attributes
   const filtbowlc = (a1, a2, a3) => {
     const dt2 = [];
     for (let i = 0; i < a3.length; i++) {
@@ -382,56 +265,10 @@ export default function Players() {
         }
       }
     }
-    console.log(dt2.flat());
     setDatas(dt2.flat());
   };
-  // const handle = (e) => {
-  // console.log(e.value);
-  // multiData.push(e.value);
-  // var res = multiData.flat();
-  // console.log(res);
 
-  //   var result = multiData.reduce((r, e) => (r.push(...e), r), [])
-  // console.log(result);
-  //  var res= e.value;
-  //  console.log(res);
-  //  filtered();
-  //  const filtered = datas.filter(function(item) {
-  //   return e.value.indexOf(item.country);
-  // });
-  // console.log(filtered);
-  // var res = e.value;
-  // res.forEach(element => {
-  //   filterData(element);
-
-  // });
-  // console.log(res);
-  // var words = res.map((v) => v.toLowerCase().trim());
-
-  // console.log(words);
-  // var filtered = data.filter("india");
-
-  // console.log(filtered);
-  // filterObjsInArr(data,res);
-  // filteredArray(words);
-  // };
-
-  // var filteredArray = (words) => {
-  // let filteredPoets = words;
-  // filteredPoets = filteredPoets.filter((poet) => {
-  //   // let poetName = poet.firstName.toLowerCase() + poet.lastName.toLowerCase()
-  //   return data.indexOf(
-  //     words) !== -1
-  // })
-  // setMultiData({
-  //   filteredPoets
-  // });
-  // console.log(filteredPoets);
-  // const result = data.filter((word) => !word.includes(words));
-  // const result = filterData(data, words);
-  // setDatas(result);
-  // };
-
+  // filter single search value
   const filterData = (value) => {
     const lowercasedValue = value.toLowerCase().trim();
     if (lowercasedValue === "") setDatas(data1);
@@ -447,6 +284,7 @@ export default function Players() {
     }
   };
 
+  // text color
   const st = {
     color: "black"
   };
@@ -455,6 +293,7 @@ export default function Players() {
     <div>
       <Card centered className="search">
         <Card.Content>
+          {/* multi-search dropdown */}
           <Menu vertical className="menu">
             <Menu.Item>
               <div className="pla">
@@ -496,6 +335,7 @@ export default function Players() {
           </Menu>
         </Card.Content>
       </Card>
+      {/* displays filter or non-filter data  */}
       <Grid doubling stackable columns={5}>
         {datas.map((val, key) => (
           <Grid.Column>
@@ -528,6 +368,21 @@ export default function Players() {
         ))}
         ;
       </Grid>
+      {/* display data not found message */}
+      <div className="notf">
+        {datas.length === 0 && (
+          <Card centered className="notfound">
+            <Card.Content>
+              <Message warning compact centered>
+                <Message.Header>
+                  Sorry,data matching filter parameters not found :){" "}
+                </Message.Header>
+                <p>Try again</p>
+              </Message>
+            </Card.Content>
+          </Card>
+        )}
+      </div>
     </div>
   );
 }

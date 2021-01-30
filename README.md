@@ -5,3 +5,12 @@
 ## Lighthouse Report
 
 <img src="lighthouse-1.jpg" alt="lighthouse report">
+
+## Steps to optimize the page load time
+
+```
+Optimize Images
+```
+```
+Minify CSS and JavaScript
+```
